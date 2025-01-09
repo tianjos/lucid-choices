@@ -1,0 +1,6 @@
+{{{
+  exports({
+    to: exportPath
+  })
+}}}
+export const {{ className }} = {} as const
