@@ -63,10 +63,17 @@ import { Profile } from '#enums/profile'
 
   // service.js
   const user = new User()
-  const user.fill({
+  
+  user.fill({
     username: 'foo',
     profile: $choices(Profile).defaultTo('ADMIN')
   })
+
+  // service2 with vinejs payload
+  type Payload = Infer<typeof signupValidator>
+
+  const user = new User()
+  user.fill(payload)
 ```
 
 ##### Using choices as a service
