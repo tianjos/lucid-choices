@@ -1,8 +1,19 @@
 # @tianjos/lucid-choices
 
-Turn any lucid model into a choices field. 
-Bring choices inwards your models.
-Keep all related choices inside your model
+This is an opinionated package with convention over configuration principle
+as a design decision.
+
+## Motivation
+- Do you feel that typescript enum is not enough for you?
+- Do you have to always passing by your enums everywhere in your code base?
+- Do you take time to handle enums as selectable fields in your views?
+
+If you answer yes for any of these question, give this package a try
+
+- Turn any lucid model into a choices field 
+- Bring choices inwards your models
+- Keep all related choices inside your model
+
 
 ## Installation
 
@@ -38,7 +49,7 @@ export const Profile = {
 ##### Using enum like as lucid column with choices
 ```
 import { choices, EnumLike } from '@tianjos/choices'
-import { Profile } from '#app/enums/profile'
+import { Profile } from '#enums/profile'
 
   // model.js
   class User extends BaseModel {
