@@ -82,6 +82,14 @@ $choices(Profile).keys({ omit: ['ADMIN'] }) // ['MODERATOR', 'REVIEWER', 'PUBLIS
 $choices(Profile).keys({ pick: ['ADMIN', 'MODERATOR'] }) // ['ADMIN', 'MODERATOR']
 ```
 
+##### Using choices with vinejs validation
+```
+export const signupValidator = vine.compile(
+  nick: vine.string().unique({ table: 'users', column: 'nick'}),
+  profile: vine.enum($choices(Profile).keys()).transform((profile) => $choices(Profile).defaultTo(profile))
+)
+```
+
 ##### Using choices as an edge global
 
 If you are using edge.js, you can use $choices inside your templates.
