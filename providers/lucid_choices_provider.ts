@@ -1,5 +1,4 @@
 import { ApplicationService } from '@adonisjs/core/types';
-// import edge from "edge.js";
 import { choices as decorator } from '../src/decorator.js';
 import { $choices as service } from '../src/service.js';
 
