@@ -1,5 +1,5 @@
 import { ApplicationService } from '@adonisjs/core/types';
-import edge from "edge.js";
+// import edge from "edge.js";
 import { choices as decorator } from '../src/decorator.js';
 import { $choices as service } from '../src/service.js';
 
@@ -17,9 +17,10 @@ export default class LucidChoicesProvider {
   constructor(protected app: ApplicationService) { }
 
   protected async registerChoicesInEdge($choices: typeof service) {
-    if (this.app.usingEdgeJS) {
-      edge.global('$choices', $choices)
-    }
+    if (!this.app.usingEdgeJS) return
+
+    const edgeExports = await import('edge.js')
+    edgeExports.default.global('$choices', $choices)
   }
 
   register() {
