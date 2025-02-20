@@ -1,6 +1,6 @@
 import { AceFactory } from '@adonisjs/core/factories'
 import { test } from '@japa/runner'
-import MakeEnumCommand from '../commands/enum.js'
+import MakeEnumCommand from '../commands/make_enum.js'
 
 test.group('Make enum', (group) => {
   group.each.teardown(async ({ context }) => {

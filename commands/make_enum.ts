@@ -13,7 +13,7 @@ export default class MakeEnumCommand extends BaseCommand {
   @args.string({ description: 'The name of enum object' })
   declare name: string
 
-  protected stubPath = 'make/enum.stub'
+  protected stubPath = 'make/enum/main.stub'
 
   async run() {
     const entity = this.app.generators.createEntity(this.name)
