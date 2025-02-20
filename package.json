@@ -1,7 +1,7 @@
 {
   "name": "@tianjos/lucid-choices",
   "description": "Turn any lucid field into enum like object",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "node": ">=20.6.0"
   },
@@ -10,8 +10,11 @@
     "build/src",
     "build/providers",
     "build/stubs",
+    "build/commands",
     "build/index.d.ts",
-    "build/index.js"
+    "build/index.js",
+    "build/configure.js",
+    "build/configure.d.ts"
   ],
   "exports": {
     ".": "./build/index.js",
