@@ -63,7 +63,7 @@ import { Profile } from '#enums/profile'
 
   // service.js
   const user = new User()
-  
+
   user.fill({
     username: 'foo',
     profile: $choices(Profile).defaultTo('ADMIN')
@@ -90,6 +90,7 @@ $choices(Profile).keys({ pick: ['ADMIN', 'MODERATOR'] }) // ['ADMIN', 'MODERATOR
 ```
 
 ##### Using choices with vinejs validation
+
 ```
 export const signupValidator = vine.compile(
   nick: vine.string().unique({ table: 'users', column: 'nick'}),

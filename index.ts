@@ -7,6 +7,6 @@
 |
 */
 
-export { configure } from './configure.js'
-export { choices } from './src/decorator.js'
-export { $choices } from './src/service.js'
+export { configure } from './configure.js';
+// export { choices } from './src/decorator.js'
+// export { $choices } from './src/service.js'
