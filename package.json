@@ -18,7 +18,11 @@
   ],
   "exports": {
     ".": "./build/index.js",
-    "./types": "./build/src/types.js"
+    "./types": "./build/src/types.js",
+    "./commands": "./build/commands/main.js",
+    "./decorator": "./build/src/decorator.js",
+    "./service": "./build/src/service.js",
+    "./utils": "./build/src/utils.js"
   },
   "scripts": {
     "clean": "del-cli build",
