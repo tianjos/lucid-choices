@@ -74,7 +74,7 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "@adonisjs/core": "6.17.0",
+    "@adonisjs/core": "^6.17.0",
     "@adonisjs/lucid": "^21.6.0",
     "edge.js": "^6.0.0"
   },
