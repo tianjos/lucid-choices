@@ -1,7 +1,7 @@
 {
   "name": "@tianjos/lucid-choices",
   "description": "Turn any lucid field into enum like object",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "engines": {
     "node": ">=20.6.0"
   },
