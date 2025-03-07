@@ -1,28 +1,29 @@
 {
   "name": "@tianjos/lucid-choices",
   "description": "Turn any lucid field into enum like object",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "engines": {
     "node": ">=20.6.0"
   },
   "type": "module",
   "files": [
-    "src",
-    "providers",
-    "stubs",
-    "configure.ts",
-    "build",
-    "commands",
-    "index.ts"
+    "build/commands",
+    "build/src",
+    "build/providers",
+    "build/stubs",
+    "build/services",
+    "build/configure.d.ts",
+    "build/configure.js",
+    "build/index.d.ts",
+    "build/index.js"
   ],
   "exports": {
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
     "./commands": "./build/commands/main.js",
-    "./lucid_choices_provider": "./build/providers/lucid_choices_provider.js",
+    "./lucid_choices_provider": "./build/providers/main.js",
     "./decorator": "./build/src/decorator.js",
-    "./service": "./build/src/service.js",
-    "./utils": "./build/src/utils.js"
+    "./service": "./build/src/service.js"
   },
   "scripts": {
     "clean": "del-cli build",
