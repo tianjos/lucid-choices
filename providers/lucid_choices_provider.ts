@@ -12,7 +12,7 @@ declare module '@adonisjs/core/types' {
 }
 
 export default class LucidChoicesProvider {
-  constructor(protected app: ApplicationService) { }
+  constructor(protected app: ApplicationService) {}
 
   protected async registerChoicesInEdge($choices: typeof service) {
     if (!this.app.usingEdgeJS) return
