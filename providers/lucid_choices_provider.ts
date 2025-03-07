@@ -12,7 +12,7 @@ declare module '@adonisjs/core/types' {
 }
 
 export default class LucidChoicesProvider {
-  constructor(protected app: ApplicationService) {}
+  constructor(protected app: ApplicationService) { }
 
   protected async registerChoicesInEdge($choices: typeof service) {
     if (!this.app.usingEdgeJS) return
@@ -28,10 +28,8 @@ export default class LucidChoicesProvider {
   }
 
   async boot() {
-    const { $choices, choices } = await this.app.container.make('tianjos.choices')
+    const { $choices } = await this.app.container.make('tianjos.choices')
 
     this.registerChoicesInEdge($choices)
-
-    return { $choices, choices }
   }
 }
