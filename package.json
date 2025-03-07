@@ -1,7 +1,7 @@
 {
   "name": "@tianjos/lucid-choices",
   "description": "Turn any lucid field into enum like object",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "engines": {
     "node": ">=20.6.0"
   },
@@ -21,7 +21,7 @@
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
     "./commands": "./build/commands/main.js",
-    "./lucid_choices_provider": "./build/providers/main.js",
+    "./lucid_choices_provider": "./build/providers/lucid_choices_provider.js",
     "./decorator": "./build/src/decorator.js",
     "./service": "./build/src/service.js"
   },
