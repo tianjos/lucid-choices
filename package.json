@@ -1,7 +1,7 @@
 {
   "name": "@tianjos/lucid-choices",
   "description": "Turn any lucid field into enum like object",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "engines": {
     "node": ">=20.6.0"
   },
@@ -29,17 +29,18 @@
     "clean": "del-cli build",
     "copy:templates": "copyfiles \"stubs/**/*.stub\" build",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
+    "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "quick:test": "node --import=./tsnode.esm.js --enable-source-maps bin/test.ts",
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
     "build": "tsc",
-    "postbuild": "npm run copy:templates",
+    "postbuild": "npm run copy:templates && npm run index:commands",
     "release": "np",
     "version": "npm run build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "index:commands": "adonis-kit index build/commands"
   },
   "keywords": [
     "adonisjs",
