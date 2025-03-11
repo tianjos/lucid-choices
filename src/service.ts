@@ -27,7 +27,7 @@ export class ChoiceService<T> implements EnumLike<T> {
     return new ChoiceService(enumLike)
   }
 
-  constructor(public readonly $enum: T) { }
+  constructor(public readonly $enum: T) {}
 
   defaultTo(selected: KeyOf<T> | ValueOf<T>) {
     this.#selected = selected
