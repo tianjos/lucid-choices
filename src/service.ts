@@ -4,6 +4,10 @@ import { omit, pick } from './utils.js'
 export class ChoiceService<T> implements EnumLike<T> {
   #selected!: KeyOf<T> | ValueOf<T>
 
+  get selected() {
+    return this.#selected
+  }
+
   #makeLookupReverse() {
     const found = Object.entries(this.$enum as any).find(([_, value]) => value === this.#selected)
     if (!found) {
@@ -23,7 +27,7 @@ export class ChoiceService<T> implements EnumLike<T> {
     return new ChoiceService(enumLike)
   }
 
-  constructor(public readonly $enum: T) {}
+  constructor(public readonly $enum: T) { }
 
   defaultTo(selected: KeyOf<T> | ValueOf<T>) {
     this.#selected = selected
