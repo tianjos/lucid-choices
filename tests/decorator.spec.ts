@@ -1,10 +1,10 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { test } from '@japa/runner'
 import { choices } from '../src/decorator.js'
+import { $choices } from '../src/service.js'
 import { EnumLike } from '../src/types.js'
 import { createDb, createTables } from '../test-helpers/setup_db.js'
 import { Profile } from '../test-helpers/setup_enum.js'
-import { $choices } from '../src/service.js'
 
 test.group('choices decorator', () => {
   test('choices column with default to admin value', async ({ assert }) => {

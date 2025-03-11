@@ -72,4 +72,26 @@ test.group('Choice Service', () => {
 
     assert.equal(key, 'BAR')
   })
+
+  test('casting to number', ({ assert }) => {
+    const foo = $choices(enumLike).defaultTo('FOO')
+    const bar = $choices(enumLike).defaultTo('BAR')
+
+    assert.equal(Number(foo), 0)
+    assert.equal(Number(bar), 1)
+  })
+
+  test('casting to string', ({ assert }) => {
+    const foo = $choices(enumLike).defaultTo('FOO')
+    const bar = $choices(enumLike).defaultTo('BAR')
+
+    assert.equal(String(foo), 'FOO')
+    assert.equal(String(bar), 'BAR')
+  })
+
+  test('casting to object', ({ assert }) => {
+    const foo = $choices(enumLike).defaultTo('FOO')
+
+    assert.strictEqual(JSON.stringify(foo), '"Choices { selected: FOO, isLookupReverse: false }"')
+  })
 })

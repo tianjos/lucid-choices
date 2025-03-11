@@ -88,6 +88,20 @@ export class ChoiceService<T> implements EnumLike<T> {
   toString() {
     return this.#selected
   }
+
+  [Symbol.for('nodejs.util.inpsect.custom')]() {
+    return `Choices { selected: ${this.#selected}, isLookupReverse: ${this.isValue(this.#selected)} }`
+  }
+
+  toJSON() {
+    return `Choices { selected: ${this.#selected}, isLookupReverse: ${this.isValue(this.#selected)} }`
+  }
+
+  valueOf() {
+    return this.isValue(this.#selected)
+      ? Object.values(this.$enum as any).findIndex((value) => value === this.#selected)
+      : Object.keys(this.$enum as any).findIndex((key) => key === this.#selected)
+  }
 }
 
 export const $choices = <T>(enumLike: T) => ChoiceService.use(enumLike)
