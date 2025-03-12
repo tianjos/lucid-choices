@@ -92,9 +92,9 @@ test.group('Choice Service', () => {
     assert.equal(String(bar), 'BAR')
   })
 
-  test('casting to object', ({ assert }) => {
+  test('stringify', ({ assert }) => {
     const foo = $choices(enumLike).defaultTo('FOO')
 
-    assert.strictEqual(JSON.stringify(foo), '"Choices { selected: FOO, isLookupReverse: false }"')
+    assert.strictEqual(JSON.stringify(foo), '{"selected":"FOO","isLookupReverse":false}')
   })
 })

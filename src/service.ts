@@ -8,6 +8,10 @@ export class ChoiceService<T> implements EnumLike<T> {
     return this.#selected
   }
 
+  get [Symbol.toStringTag]() {
+    return 'Choice'
+  }
+
   #makeLookupReverse() {
     const found = Object.entries(this.$enum as any).find(([_, value]) => value === this.#selected)
     if (!found) {
@@ -93,12 +97,12 @@ export class ChoiceService<T> implements EnumLike<T> {
     return this.#selected
   }
 
-  [Symbol.for('nodejs.util.inpsect.custom')]() {
-    return `Choices { selected: ${this.#selected}, isLookupReverse: ${this.isValue(this.#selected)} }`
+  [Symbol.for('nodejs.util.inspect.custom')]() {
+    return `Choice { selected: ${this.#selected}, isLookupReverse: ${this.isValue(this.#selected)} }`
   }
 
   toJSON() {
-    return `Choices { selected: ${this.#selected}, isLookupReverse: ${this.isValue(this.#selected)} }`
+    return { selected: this.#selected, isLookupReverse: this.isValue(this.#selected) }
   }
 
   valueOf() {

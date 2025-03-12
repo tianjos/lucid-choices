@@ -42,7 +42,7 @@ export interface EnumLike<T> {
 
   toString(): KeyOf<T> | ValueOf<T>
 
-  toJSON(): string
+  toJSON(): { selected: ValueOf<T> | KeyOf<T>; isLookupReverse: boolean }
 
   valueOf(): number
 }
