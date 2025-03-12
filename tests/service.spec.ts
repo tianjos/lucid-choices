@@ -40,7 +40,10 @@ test.group('Choice Service', () => {
   })
 
   test('is equals', ({ assert }) => {
-    assert.isTrue($choices(enumLike).defaultTo('FOO').isEquals('FOO'))
+    const foo1 = $choices(enumLike).defaultTo('FOO')
+    const foo2 = $choices(enumLike).defaultTo('FOO')
+
+    assert.isTrue(foo1.isEquals(foo2))
   })
 
   test('pick keys', ({ assert }) => {

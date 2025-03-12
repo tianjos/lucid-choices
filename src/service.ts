@@ -77,8 +77,8 @@ export class ChoiceService<T> implements EnumLike<T> {
     return this.values().includes(value)
   }
 
-  isEquals(to: KeyOf<T> | ValueOf<T>): boolean {
-    return this.#selected === to
+  isEquals<U>(other: EnumLike<U>): boolean {
+    return this.selected === other.selected
   }
 
   in(states: (KeyOf<T> | ValueOf<T>)[]) {

@@ -18,6 +18,8 @@ export type ValueOf<T> = T[keyof T]
 export type KeyOf<T> = Extract<keyof T, string>
 
 export interface EnumLike<T> {
+  get selected(): ValueOf<T> | KeyOf<T>
+
   defaultTo(selected: KeyOf<T> | ValueOf<T>): this
 
   keys(cherryPick?: Partial<CherryPick<KeyOf<T>>>): KeyOf<T>[]
@@ -34,9 +36,13 @@ export interface EnumLike<T> {
 
   isValue(value: any): value is ValueOf<T>
 
-  isEquals(to: KeyOf<T> | ValueOf<T>): boolean
+  isEquals(other: EnumLike<unknown>): boolean
 
   in(states: (KeyOf<T> | ValueOf<T>)[]): boolean
 
   toString(): KeyOf<T> | ValueOf<T>
+
+  toJSON(): string
+
+  valueOf(): number
 }

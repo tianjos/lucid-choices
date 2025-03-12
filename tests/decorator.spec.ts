@@ -28,7 +28,7 @@ test.group('choices decorator', () => {
 
     await user.save()
 
-    assert.isTrue(user.profile.isEquals('ADMIN'))
+    assert.equal(user.profile.selected, 'ADMIN')
   })
 
   test('choices column with lookup reverse', async ({ assert }) => {
@@ -54,7 +54,7 @@ test.group('choices decorator', () => {
 
     const userFromDb = await User.firstOrFail()
 
-    assert.isTrue(userFromDb.profile.isEquals('admin'))
+    assert.equal(userFromDb.profile.selected, 'admin')
   })
 
   test('choices column type of enum like', ({ expectTypeOf }) => {
