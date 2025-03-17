@@ -89,4 +89,23 @@ test.group('choices decorator', () => {
 
     assert.deepEqual({ username: 'foo', profile: 'ADMIN' }, user.serialize())
   })
+
+  test('better approach for is', ({ assert }) => {
+    class User extends BaseModel {
+      @column()
+      declare username: string
+
+      @choices({ enumLike: Profile })
+      declare profile: EnumLike<typeof Profile>
+    }
+
+    const user = new User()
+
+    user.fill({
+      username: 'foo',
+      profile: $choices(Profile).defaultTo('ADMIN'),
+    })
+
+    assert.isTrue(user.profile.is('ADMIN'))
+  })
 })

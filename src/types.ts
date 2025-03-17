@@ -40,6 +40,8 @@ export interface EnumLike<T> {
 
   in(states: (KeyOf<T> | ValueOf<T>)[]): boolean
 
+  is(selected: ValueOf<T> | KeyOf<T>): boolean
+
   toString(): KeyOf<T> | ValueOf<T>
 
   toJSON(): { selected: ValueOf<T> | KeyOf<T>; isLookupReverse: boolean }

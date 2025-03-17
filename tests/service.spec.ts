@@ -46,6 +46,16 @@ test.group('Choice Service', () => {
     assert.isTrue(foo1.isEquals(foo2))
   })
 
+  test('is', ({ assert }) => {
+    const foo = $choices(enumLike).defaultTo('FOO')
+
+    assert.isTrue(foo.is('FOO'))
+  })
+
+  test('is without default value defined', ({ assert }) => {
+    assert.isFalse($choices(enumLike).is('FOO'))
+  })
+
   test('pick keys', ({ assert }) => {
     const pick = $choices(enumLike).keys({ pick: ['FOO'] })
 
@@ -96,5 +106,12 @@ test.group('Choice Service', () => {
     const foo = $choices(enumLike).defaultTo('FOO')
 
     assert.strictEqual(JSON.stringify(foo), '{"selected":"FOO","isLookupReverse":false}')
+  })
+
+  test('overloading comparison operator', ({ assert }) => {
+    const foo = $choices(enumLike).defaultTo('FOO')
+    const bar = $choices(enumLike).defaultTo('BAR')
+
+    assert.isTrue(bar > foo)
   })
 })
