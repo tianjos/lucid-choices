@@ -1,0 +1,41 @@
+{{#var middlewareName = generators.middlewareName(entity.name)}}
+{{#var middlewareFileName = generators.middlewareFileName(entity.name)}}
+{{{
+  exports({ to: app.middlewarePath(entity.path, middlewareFileName) })
+}}}
+import { readdir } from 'node:fs/promises'
+import app from '@adonisjs/core/services/app'
+import type { HttpContext } from '@adonisjs/core/http'
+import type { NextFn } from '@adonisjs/core/types/http'
+
+/**
+ * Init bouncer middleware is used to create a bouncer instance
+ * during an HTTP request
+ */
+export default class LucidChoicesMiddleware {
+  async handle(ctx: HttpContext, next: NextFn) {
+    if (!('view' in ctx)) {
+        return next()
+    }
+
+    const modules = await this.#getEnumModules(this.#enumsPath())
+
+    for (const module of modules) {
+        const $enum = await app.import(app.makePath(this.#enumsPath(), module))
+
+        const name = Object.keys($enum)[0]
+
+        ctx.view.share({ [name]: $enum[name] })
+    }
+
+    return next()
+  }
+
+  #enumsPath() {
+    return app.makePath(app.rcFile.directories.enums)
+  }
+
+  async #getEnumModules(path: string) {
+    return readdir(path)
+  }
+}

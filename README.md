@@ -93,7 +93,7 @@ $choices(Profile).keys({ pick: ['ADMIN', 'MODERATOR'] }) // ['ADMIN', 'MODERATOR
 
 ```
 export const signupValidator = vine.compile(
-  nick: vine.string().unique({ table: 'users', column: 'nick'}),
+  nick: vine.string().unique({ table: 'users', column: 'nick' }),
   profile: vine.enum($choices(Profile).keys()).transform((profile) => $choices(Profile).defaultTo(profile))
 )
 ```
@@ -109,5 +109,35 @@ If you are using edge.js, you can use $choices inside your templates.
   options: $choices(Profile).keys(),
   selected: user.profile.key()
 })
+```
+
+## Middleware
+
+If you want, it's possible to pass enums implicitly in your views with enums middleware, as is below.
 
 ```
+router.on('choices').render('pages/user/profile').use('enum')
+```
+
+
+## Sorting by index
+
+Keep in mind that the order of fields in your enum like object matters. Every field
+has a related index associated with (implicitly). [Postgres docs](https://www.postgresql.org/docs/current/datatype-enum.html#DATATYPE-ENUM-ORDERING)
+
+### Example of order by in database
+
+```
+User.query().orderBy('profile', 'desc')
+
+```
+
+### Example of order by with array
+
+```
+users.sort((a, b) => a > b ? -1 : 1)
+```
+
+#### PS: As I always use postgres as my db engine, let me know if this doesn't works with another engine
+
+#### PS²: Recommended set options useNative and enumName in the enum migration files

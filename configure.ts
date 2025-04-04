@@ -14,6 +14,7 @@
 
 import ConfigureCommand from '@adonisjs/core/commands/configure'
 import { readFile, writeFile } from 'node:fs/promises'
+import { stubsRoot } from './stubs/main.js'
 
 export async function configure(command: ConfigureCommand) {
   const codemods = await command.createCodemods()
@@ -35,4 +36,15 @@ export async function configure(command: ConfigureCommand) {
       encoding: 'utf-8',
     })
   })
+
+  await codemods.makeUsingStub(stubsRoot, 'middleware.stub', {
+    entity: command.app.generators.createEntity('lucid_choices'),
+  })
+
+  await codemods.registerMiddleware('named', [
+    {
+      name: 'enum',
+      path: '#middleware/lucid_choices_middleware',
+    },
+  ])
 }
