@@ -141,3 +141,7 @@ users.sort((a, b) => a > b ? -1 : 1)
 #### PS: As I always use postgres as my db engine, let me know if this doesn't works with another engine
 
 #### PS²: Recommended set options useNative and enumName in the enum migration files
+
+```
+table.enum('profile', $choices(Profile).keys(), { useNative: true, enumName: 'user_profile' })
+```
