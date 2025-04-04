@@ -105,7 +105,7 @@ test.group('Choice Service', () => {
   test('stringify', ({ assert }) => {
     const foo = $choices(enumLike).defaultTo('FOO')
 
-    assert.strictEqual(JSON.stringify(foo), '{"selected":"FOO","isLookupReverse":false}')
+    assert.strictEqual(JSON.stringify(foo), JSON.stringify({ selected: 'FOO', $enum: enumLike }))
   })
 
   test('overloading comparison operator', ({ assert }) => {
@@ -113,5 +113,17 @@ test.group('Choice Service', () => {
     const bar = $choices(enumLike).defaultTo('BAR')
 
     assert.isTrue(bar > foo)
+  })
+
+  test('length', ({ assert }) => {
+    assert.equal($choices(enumLike).length(), 2)
+  })
+
+  test('at key', ({ assert }) => {
+    assert.equal($choices(enumLike).at(0, 'key'), 'FOO')
+  })
+
+  test('at value', ({ assert }) => {
+    assert.equal($choices(enumLike).at(0, 'value'), 'foo')
   })
 })

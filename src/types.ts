@@ -44,7 +44,11 @@ export interface EnumLike<T> {
 
   toString(): KeyOf<T> | ValueOf<T>
 
-  toJSON(): { selected: ValueOf<T> | KeyOf<T>; isLookupReverse: boolean }
+  toJSON(): { selected: ValueOf<T> | KeyOf<T>; $enum: T }
+
+  length(): number
+
+  at(index: number, lookup: 'key' | 'value'): KeyOf<T> | ValueOf<T>
 
   valueOf(): number
 }
